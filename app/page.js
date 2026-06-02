@@ -1,4 +1,5 @@
 import entries from "./data/entries.js";
+import ShareButton from "./components/ShareButton.js";
 
 export default function Home() {
   /* Pick today's entry by cycling through the 30 entries based on the date */
@@ -155,12 +156,19 @@ export default function Home() {
           Now close this, and go live it.
         </p>
 
+        {/* Quiet share link */}
+        <ShareButton
+          verse={today.verse}
+          reference={today.reference}
+          meditation={today.meditation}
+        />
+
         {/* Tagline at the very bottom */}
         <p
           style={{
             fontSize: "12px",
             color: "var(--muted)",
-            marginTop: "56px",
+            marginTop: "40px",
             opacity: 0.6,
           }}
         >
