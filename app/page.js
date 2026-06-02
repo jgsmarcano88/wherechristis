@@ -25,28 +25,40 @@ export default function Home() {
           textAlign: "center",
         }}
       >
-        {/* Site name */}
-        <p
-          style={{
-            fontSize: "13px",
-            letterSpacing: "3px",
-            color: "var(--gold)",
-            marginBottom: "40px",
-            fontWeight: 400,
-          }}
-        >
-          WHERE CHRIST IS
-        </p>
-
-        {/* Gold divider */}
-        <div
-          style={{
-            width: "48px",
-            height: "1px",
-            backgroundColor: "var(--gold)",
-            margin: "0 auto 48px",
-          }}
-        />
+        {/* Logo — Option D: WHERE small gold, Christ Is large navy italic */}
+        <div style={{ marginBottom: "44px" }}>
+          <p
+            style={{
+              fontSize: "11px",
+              letterSpacing: "4px",
+              color: "var(--gold)",
+              fontWeight: 400,
+              marginBottom: "6px",
+            }}
+          >
+            WHERE
+          </p>
+          <p
+            style={{
+              fontSize: "28px",
+              color: "var(--navy)",
+              fontStyle: "italic",
+              fontWeight: 400,
+              lineHeight: 1.2,
+            }}
+          >
+            Christ Is
+          </p>
+          <div
+            style={{
+              width: "64px",
+              height: "1px",
+              backgroundColor: "var(--gold)",
+              margin: "10px auto 0",
+              opacity: 0.6,
+            }}
+          />
+        </div>
 
         {/* Verse block with dawn glow */}
         <div
