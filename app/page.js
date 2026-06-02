@@ -1,65 +1,160 @@
-import Image from "next/image";
+import entries from "./data/entries.js";
 
 export default function Home() {
+  /* Pick today's entry by cycling through the 30 entries based on the date */
+  const now = new Date();
+  const start = new Date(now.getFullYear(), 0, 0);
+  const dayOfYear = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+  const index = dayOfYear % entries.length;
+  const today = entries[index];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "64px 24px",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "540px",
+          width: "100%",
+          textAlign: "center",
+        }}
+      >
+        {/* Site name */}
+        <p
+          style={{
+            fontSize: "13px",
+            letterSpacing: "3px",
+            color: "var(--gold)",
+            marginBottom: "40px",
+            fontWeight: 400,
+          }}
+        >
+          WHERE CHRIST IS
+        </p>
+
+        {/* Gold divider */}
+        <div
+          style={{
+            width: "48px",
+            height: "1px",
+            backgroundColor: "var(--gold)",
+            margin: "0 auto 48px",
+          }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+        {/* Verse block with dawn glow */}
+        <div
+          style={{
+            backgroundColor: "var(--dawn-light)",
+            borderRadius: "8px",
+            padding: "36px 32px",
+            marginBottom: "44px",
+            maxWidth: "520px",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "19px",
+              lineHeight: 1.8,
+              color: "var(--navy)",
+              fontStyle: "italic",
+              fontWeight: 400,
+            }}
+          >
+            {today.verse}
+          </p>
+          <p
+            style={{
+              fontSize: "13px",
+              color: "var(--muted)",
+              marginTop: "16px",
+              fontStyle: "normal",
+            }}
+          >
+            {today.reference}
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        {/* Meditation */}
+        <p
+          style={{
+            fontSize: "16px",
+            lineHeight: 1.9,
+            color: "var(--brown)",
+            textAlign: "center",
+            marginBottom: "44px",
+            padding: "0 8px",
+          }}
+        >
+          {today.meditation}
+        </p>
+
+        {/* Gold divider */}
+        <div
+          style={{
+            width: "32px",
+            height: "1px",
+            backgroundColor: "var(--gold)",
+            margin: "0 auto 40px",
+          }}
+        />
+
+        {/* Carry-with-you question */}
+        <p
+          style={{
+            fontSize: "15px",
+            lineHeight: 1.8,
+            color: "var(--navy)",
+            fontStyle: "italic",
+            marginBottom: "52px",
+            padding: "0 12px",
+          }}
+        >
+          {today.question}
+        </p>
+
+        {/* Gold divider */}
+        <div
+          style={{
+            width: "32px",
+            height: "1px",
+            backgroundColor: "var(--gold)",
+            margin: "0 auto 40px",
+          }}
+        />
+
+        {/* Closing line */}
+        <p
+          style={{
+            fontSize: "13px",
+            letterSpacing: "1px",
+            color: "var(--muted)",
+            fontStyle: "italic",
+          }}
+        >
+          Now close this, and go live it.
+        </p>
+
+        {/* Tagline at the very bottom */}
+        <p
+          style={{
+            fontSize: "12px",
+            color: "var(--muted)",
+            marginTop: "56px",
+            opacity: 0.6,
+          }}
+        >
+          &ldquo;Set your mind on things above.&rdquo;
+        </p>
+      </div>
+    </main>
   );
 }
