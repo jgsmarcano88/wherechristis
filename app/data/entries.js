@@ -269,6 +269,96 @@ const entries = [
     question:
       "Do I realize that Jesus Himself is asking the Father for me to be with Him?",
   },
+  {
+    verse:
+      '"If I go and prepare a place for you, I will come again and receive you to Myself, that where I am, there you may be also."',
+    reference: "John 14:3",
+    meditation:
+      "Jesus did not only promise a place — He promised to come back for you Himself. He will not send a messenger. He will not leave you to find your own way. He is coming, in person, to bring you home.",
+    question:
+      "Am I waiting for Christ Himself today — or only for the things I hope He will give me?",
+  },
+  {
+    verse:
+      '"we are of good courage, I say, and prefer rather to be absent from the body and to be at home with the Lord."',
+    reference: "2 Corinthians 5:8",
+    meditation:
+      "To Paul, leaving this life was not a loss but a homecoming. To be away from the body is to be at home with the Lord. There is a place where you are already expected, already known, already wanted. You are not drifting toward an end; you are traveling toward home.",
+    question:
+      "When I think of being with the Lord, does it feel like an ending — or like coming home?",
+  },
+  {
+    verse:
+      '"and though you have not seen Him, you love Him, and though you do not see Him now, but believe in Him, you greatly rejoice with joy inexpressible and full of glory."',
+    reference: "1 Peter 1:8",
+    meditation:
+      "You have never seen His face, and yet you love Him. You cannot see Him now, and yet you trust Him. This is not a lesser kind of love — it is the kind that fills you with a joy too deep for words. The unseen Christ is nearer than the things you can touch.",
+    question:
+      "Can I love and trust the One I cannot see today, more than the things I can?",
+  },
+  {
+    verse:
+      '"Now faith is the assurance of things hoped for, the conviction of things not seen."',
+    reference: "Hebrews 11:1",
+    meditation:
+      "Faith is not wishful thinking. It is assurance — a settled confidence in what God has promised but you have not yet received. The things not seen are not less real; they are simply still ahead. Faith is how you hold them now.",
+    question:
+      "What promise of God am I being invited to hold by faith, before I can see it?",
+  },
+  {
+    verse:
+      '"But seek first His kingdom and His righteousness, and all these things will be added to you."',
+    reference: "Matthew 6:33",
+    meditation:
+      "Jesus does not ask you to ignore your daily needs — He knows you have them. He simply tells you where to look first. Seek His kingdom, and the rest falls into its proper place. Put eternity first, and today gets lighter.",
+    question:
+      "What am I seeking first today — and what would change if His kingdom came first?",
+  },
+  {
+    verse:
+      '"One thing I have asked from the Lord, that I shall seek: that I may dwell in the house of the Lord all the days of my life, to behold the beauty of the Lord."',
+    reference: "Psalm 27:4",
+    meditation:
+      "David, a king with everything, narrowed his whole heart down to one request: to dwell with God and behold His beauty. Not power, not safety, not success — nearness. When everything else falls away, this is the one thing worth asking for.",
+    question:
+      "If I could ask God for only one thing today, would it be Him?",
+  },
+  {
+    verse:
+      '"But according to His promise we are looking for new heavens and a new earth, in which righteousness dwells."',
+    reference: "2 Peter 3:13",
+    meditation:
+      "This world, with all its injustice and ache, is not the final word. A new heaven and a new earth are coming — a place where righteousness is not fought for but simply lives there, at home. You are looking for that. Keep looking.",
+    question:
+      "What brokenness am I aching over — and can I lift my eyes to the world where righteousness dwells?",
+  },
+  {
+    verse:
+      '"Yet you do not know what your life will be like tomorrow. You are just a vapor that appears for a little while and then vanishes away."',
+    reference: "James 4:14",
+    meditation:
+      "Your life here is a vapor — here in the morning, gone by noon. This is not said to frighten you, but to free you. If this life is brief, then it was never meant to carry the weight of forever. Lay that weight down where it belongs.",
+    question:
+      "What am I treating as permanent that is really just passing?",
+  },
+  {
+    verse:
+      '"Therefore, my beloved brothers, be steadfast, immovable, always abounding in the work of the Lord, knowing that your labor is not in vain in the Lord."',
+    reference: "1 Corinthians 15:58",
+    meditation:
+      "Much of what you do here feels like it disappears — the dishes, the work, the small faithfulness no one sees. But nothing done for the Lord is ever wasted. It is gathered up, remembered, and carried into eternity. Your quiet labor is not in vain.",
+    question:
+      "What small, unseen faithfulness can I offer today, trusting it is not wasted?",
+  },
+  {
+    verse:
+      '"they will see His face, and His name will be on their foreheads."',
+    reference: "Revelation 22:4",
+    meditation:
+      "This is the end of the whole story: they will see His face. Not a vision, not a glimpse — His face. The longing behind every prayer, the ache beneath every sorrow, answered at last. You were made for that moment.",
+    question:
+      "Do I long to see His face — and does that longing shape how I live today?",
+  },
 ];
 
 export default entries;
