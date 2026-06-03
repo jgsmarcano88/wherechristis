@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function ShareButton({ verse, reference, meditation }) {
   const [saving, setSaving] = useState(false);
+  const [hover, setHover] = useState(false);
 
   async function handleShare() {
     setSaving(true);
@@ -177,25 +178,28 @@ export default function ShareButton({ verse, reference, meditation }) {
   }
 
   return (
-    <button
-      onClick={handleShare}
-      disabled={saving}
-      style={{
-        background: "none",
-        border: "none",
-        color: "var(--gold)",
-        fontSize: "12px",
-        fontFamily: "inherit",
-        cursor: "pointer",
-        padding: "8px 16px",
-        marginTop: "12px",
-        letterSpacing: "0.5px",
-        textDecoration: "underline",
-        textUnderlineOffset: "3px",
-      }}
-    >
-      {saving ? "Saving..." : "Share this as an image"}
-    </button>
+    <div style={{ marginTop: "20px", textAlign: "center" }}>
+      <button
+        onClick={handleShare}
+        disabled={saving}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        style={{
+          background: hover ? "var(--gold)" : "transparent",
+          border: "1px solid var(--gold)",
+          color: hover ? "#FAF8F4" : "var(--gold)",
+          fontSize: "14px",
+          fontFamily: "inherit",
+          cursor: "pointer",
+          padding: "12px 28px",
+          borderRadius: "999px",
+          letterSpacing: "0.5px",
+          transition: "all 0.25s ease",
+        }}
+      >
+        {saving ? "Preparing..." : "Share this as an image"}
+      </button>
+    </div>
   );
 }
 
