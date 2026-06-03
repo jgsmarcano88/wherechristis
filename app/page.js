@@ -1,13 +1,37 @@
-import entries from "./data/entries.js";
+"use client";
+
+import { useState, useEffect } from "react";
+import { languages, entriesByLang, ui } from "./data/index.js";
 import ShareButton from "./components/ShareButton.js";
 
 export default function Home() {
-  /* Pick today's entry by cycling through the 30 entries based on the date */
+  const [lang, setLang] = useState("en");
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("wci-lang");
+    if (saved && entriesByLang[saved]) setLang(saved);
+  }, []);
+
+  function changeLang(code) {
+    setLang(code);
+    setOpen(false);
+    try {
+      localStorage.setItem("wci-lang", code);
+    } catch (e) {}
+  }
+
+  const entries = entriesByLang[lang];
+  const t = ui[lang];
+
   const now = new Date();
   const start = new Date(now.getFullYear(), 0, 0);
   const dayOfYear = Math.floor((now - start) / (1000 * 60 * 60 * 24));
   const index = dayOfYear % entries.length;
   const today = entries[index];
+
+  const currentLabel =
+    languages.find((l) => l.code === lang)?.label || "English";
 
   return (
     <main
@@ -17,16 +41,74 @@ export default function Home() {
         alignItems: "center",
         justifyContent: "center",
         padding: "64px 24px",
+        position: "relative",
       }}
     >
+      {/* Language switcher — top right */}
       <div
         style={{
-          maxWidth: "540px",
-          width: "100%",
-          textAlign: "center",
+          position: "absolute",
+          top: "20px",
+          right: "20px",
+          fontSize: "13px",
         }}
       >
-        {/* Logo — Option D: WHERE small gold, Christ Is large navy italic */}
+        <button
+          onClick={() => setOpen(!open)}
+          style={{
+            background: "none",
+            border: "none",
+            color: "var(--gold)",
+            fontFamily: "inherit",
+            fontSize: "13px",
+            cursor: "pointer",
+            padding: "6px 10px",
+            letterSpacing: "0.5px",
+          }}
+        >
+          {currentLabel} ▾
+        </button>
+        {open && (
+          <div
+            style={{
+              position: "absolute",
+              right: 0,
+              marginTop: "4px",
+              backgroundColor: "#FFFDF9",
+              border: "1px solid rgba(201,168,76,0.4)",
+              borderRadius: "8px",
+              overflow: "hidden",
+              boxShadow: "0 2px 10px rgba(26,58,107,0.08)",
+              minWidth: "120px",
+            }}
+          >
+            {languages.map((l) => (
+              <button
+                key={l.code}
+                onClick={() => changeLang(l.code)}
+                style={{
+                  display: "block",
+                  width: "100%",
+                  textAlign: "left",
+                  background:
+                    l.code === lang ? "rgba(201,168,76,0.12)" : "none",
+                  border: "none",
+                  color: l.code === lang ? "var(--gold)" : "var(--brown)",
+                  fontFamily: "inherit",
+                  fontSize: "13px",
+                  cursor: "pointer",
+                  padding: "10px 14px",
+                }}
+              >
+                {l.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div style={{ maxWidth: "540px", width: "100%", textAlign: "center" }}>
+        {/* Logo */}
         <div style={{ marginBottom: "44px" }}>
           <p
             style={{
@@ -61,7 +143,7 @@ export default function Home() {
           />
         </div>
 
-        {/* Verse block with dawn glow */}
+        {/* Verse card */}
         <div
           style={{
             backgroundColor: "var(--dawn-light)",
@@ -89,7 +171,6 @@ export default function Home() {
               fontSize: "13px",
               color: "var(--muted)",
               marginTop: "16px",
-              fontStyle: "normal",
             }}
           >
             {today.reference}
@@ -110,7 +191,6 @@ export default function Home() {
           {today.meditation}
         </p>
 
-        {/* Gold divider */}
         <div
           style={{
             width: "32px",
@@ -120,7 +200,7 @@ export default function Home() {
           }}
         />
 
-        {/* Carry-with-you question */}
+        {/* Question */}
         <p
           style={{
             fontSize: "15px",
@@ -134,7 +214,6 @@ export default function Home() {
           {today.question}
         </p>
 
-        {/* Gold divider */}
         <div
           style={{
             width: "32px",
@@ -144,7 +223,7 @@ export default function Home() {
           }}
         />
 
-        {/* Closing line */}
+        {/* Closing */}
         <p
           style={{
             fontSize: "13px",
@@ -153,17 +232,20 @@ export default function Home() {
             fontStyle: "italic",
           }}
         >
-          Now close this, and go live it.
+          {t.closing}
         </p>
 
-        {/* Quiet share link */}
+        {/* Share */}
         <ShareButton
           verse={today.verse}
           reference={today.reference}
           meditation={today.meditation}
+          shareLabel={t.share}
+          preparingLabel={t.preparing}
+          tagline={t.tagline}
         />
 
-        {/* Tagline at the very bottom */}
+        {/* Tagline */}
         <p
           style={{
             fontSize: "12px",
@@ -172,7 +254,7 @@ export default function Home() {
             opacity: 0.6,
           }}
         >
-          &ldquo;Set your mind on things above.&rdquo;
+          &ldquo;{t.tagline}&rdquo;
         </p>
       </div>
     </main>

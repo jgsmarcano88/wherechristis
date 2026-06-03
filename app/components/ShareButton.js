@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 
-export default function ShareButton({ verse, reference, meditation }) {
+export default function ShareButton({
+  verse,
+  reference,
+  meditation,
+  shareLabel = "Share this as an image",
+  preparingLabel = "Preparing...",
+  tagline = "Set your mind on things above.",
+}) {
   const [saving, setSaving] = useState(false);
   const [hover, setHover] = useState(false);
 
@@ -15,17 +22,14 @@ export default function ShareButton({ verse, reference, meditation }) {
     tempCanvas.height = 100;
     const tempCtx = tempCanvas.getContext("2d");
 
-    /* Measure verse lines */
     tempCtx.font = 'italic 28px "Georgia", serif';
     const verseClean = verse.replace(/^"|"$/g, "");
     const cardInner = w - 300;
     const verseLines = wrapText(tempCtx, verseClean, cardInner);
 
-    /* Measure meditation lines */
     tempCtx.font = '22px "Georgia", serif';
     const medLines = wrapText(tempCtx, meditation, w - 260);
 
-    /* Calculate compact height */
     const verseLineH = 42;
     const medLineH = 34;
     const versePad = 44;
@@ -38,30 +42,25 @@ export default function ShareButton({ verse, reference, meditation }) {
     const divider2Y = medStartY + medLines.length * medLineH + 28;
     const h = divider2Y + 80;
 
-    /* Create final canvas */
     const canvas = document.createElement("canvas");
     canvas.width = w;
     canvas.height = h;
     const ctx = canvas.getContext("2d");
 
-    /* Parchment background */
     ctx.fillStyle = "#FAF8F4";
     ctx.fillRect(0, 0, w, h);
 
-    /* Logo — WHERE */
     ctx.fillStyle = "#C9A84C";
     ctx.font = '18px "Georgia", serif';
     ctx.textAlign = "center";
     ctx.letterSpacing = "5px";
     ctx.fillText("WHERE", w / 2, 64);
 
-    /* Logo — Christ Is */
     ctx.fillStyle = "#1A3A6B";
     ctx.font = 'italic 42px "Georgia", serif';
     ctx.letterSpacing = "0px";
     ctx.fillText("Christ Is", w / 2, 112);
 
-    /* Gold line under logo */
     ctx.strokeStyle = "#C9A84C";
     ctx.lineWidth = 0.75;
     ctx.globalAlpha = 0.6;
@@ -71,7 +70,6 @@ export default function ShareButton({ verse, reference, meditation }) {
     ctx.stroke();
     ctx.globalAlpha = 1;
 
-    /* Dawn-light glow card */
     const cardX = 110;
     const cardW = w - 220;
     const radius = 12;
@@ -94,7 +92,6 @@ export default function ShareButton({ verse, reference, meditation }) {
     ctx.closePath();
     ctx.fill();
 
-    /* Verse text */
     ctx.fillStyle = "#1A3A6B";
     ctx.font = 'italic 28px "Georgia", serif';
     ctx.textAlign = "center";
@@ -103,13 +100,11 @@ export default function ShareButton({ verse, reference, meditation }) {
       ctx.fillText(line, w / 2, verseStartY + i * verseLineH);
     });
 
-    /* Reference */
     ctx.fillStyle = "#9A8A6A";
     ctx.font = '18px "Georgia", serif';
     const refY = verseStartY + verseLines.length * verseLineH + refGap;
     ctx.fillText(reference, w / 2, refY);
 
-    /* Gold divider */
     ctx.strokeStyle = "#C9A84C";
     ctx.lineWidth = 0.75;
     ctx.beginPath();
@@ -117,7 +112,6 @@ export default function ShareButton({ verse, reference, meditation }) {
     ctx.lineTo(w / 2 + 16, dividerY);
     ctx.stroke();
 
-    /* Meditation text */
     ctx.fillStyle = "#6B5E4A";
     ctx.font = '22px "Georgia", serif';
     ctx.textAlign = "center";
@@ -125,7 +119,6 @@ export default function ShareButton({ verse, reference, meditation }) {
       ctx.fillText(line, w / 2, medStartY + i * medLineH);
     });
 
-    /* Gold divider below meditation */
     ctx.strokeStyle = "#C9A84C";
     ctx.lineWidth = 0.75;
     ctx.beginPath();
@@ -133,21 +126,18 @@ export default function ShareButton({ verse, reference, meditation }) {
     ctx.lineTo(w / 2 + 16, divider2Y);
     ctx.stroke();
 
-    /* Site URL */
     ctx.fillStyle = "#9A8A6A";
     ctx.font = '17px "Georgia", serif';
     ctx.globalAlpha = 0.6;
     ctx.fillText("wherechristis.com", w / 2, h - 38);
     ctx.globalAlpha = 1;
 
-    /* Tagline */
     ctx.fillStyle = "#9A8A6A";
     ctx.font = 'italic 15px "Georgia", serif';
     ctx.globalAlpha = 0.4;
-    ctx.fillText("\u201CSet your mind on things above.\u201D", w / 2, h - 14);
+    ctx.fillText("\u201C" + tagline + "\u201D", w / 2, h - 14);
     ctx.globalAlpha = 1;
 
-    /* Share on mobile, download on desktop */
     canvas.toBlob(async (blob) => {
       if (navigator.share && navigator.canShare) {
         try {
@@ -155,19 +145,12 @@ export default function ShareButton({ verse, reference, meditation }) {
             type: "image/png",
           });
           if (navigator.canShare({ files: [file] })) {
-            await navigator.share({
-              files: [file],
-              title: "Where Christ Is",
-            });
+            await navigator.share({ files: [file], title: "Where Christ Is" });
             setSaving(false);
             return;
           }
-        } catch (e) {
-          /* User cancelled or share failed — fall through to download */
-        }
+        } catch (e) {}
       }
-
-      /* Desktop fallback: download */
       const link = document.createElement("a");
       link.download = "where-christ-is-today.png";
       link.href = URL.createObjectURL(blob);
@@ -197,18 +180,16 @@ export default function ShareButton({ verse, reference, meditation }) {
           transition: "all 0.25s ease",
         }}
       >
-        {saving ? "Preparing..." : "Share this as an image"}
+        {saving ? preparingLabel : shareLabel}
       </button>
     </div>
   );
 }
 
-/* Helper: wrap text into lines that fit a max width */
 function wrapText(ctx, text, maxWidth) {
   const words = text.split(" ");
   const lines = [];
   let current = "";
-
   for (const word of words) {
     const test = current ? current + " " + word : word;
     if (ctx.measureText(test).width > maxWidth) {
