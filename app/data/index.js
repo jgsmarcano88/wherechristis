@@ -1,12 +1,14 @@
 import en from "./entries.js";
 import es from "./entries.es.js";
+import fr from "./entries.fr.js";
 
 export const languages = [
   { code: "en", label: "English" },
   { code: "es", label: "Español" },
+  { code: "fr", label: "Français" },
 ];
 
-export const entriesByLang = { en, es };
+export const entriesByLang = { en, es, fr };
 
 export const ui = {
   en: {
@@ -20,5 +22,11 @@ export const ui = {
     tagline: "Poned la mira en las cosas de arriba.",
     share: "Compartir como imagen",
     preparing: "Preparando...",
+  },
+  fr: {
+    closing: "Maintenant ferme ceci, et va le vivre.",
+    tagline: "Affectionnez-vous aux choses d\u2019en haut.",
+    share: "Partager en image",
+    preparing: "Préparation...",
   },
 };
