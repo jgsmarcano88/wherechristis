@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { pages } from "../data/pages.js";
 import SubPageHeader from "../components/SubPageHeader";
@@ -36,7 +37,25 @@ export default function SupportPage() {
         <div style={{ fontSize: "15px", lineHeight: 1.85, color: "var(--brown)" }}>
           <p style={{ marginBottom: "20px" }}>{t.p1}</p>
           <p style={{ marginBottom: "20px" }}>{t.p2}</p>
-          <p style={{ marginBottom: "20px" }}>{t.p3}</p>
+          <p style={{ marginBottom: "32px" }}>{t.p3}</p>
+
+          <Link
+            href="https://buy.stripe.com/cNi00ibf06AZ9fofgn8EM02"
+            target="_blank"
+            style={{
+              display: "inline-block",
+              padding: "14px 36px",
+              border: "1.5px solid var(--gold)",
+              borderRadius: "999px",
+              color: "var(--navy)",
+              fontSize: "14px",
+              letterSpacing: "0.5px",
+              textDecoration: "none",
+              fontWeight: 600,
+            }}
+          >
+            {t.donate}
+          </Link>
 
           <div
             style={{

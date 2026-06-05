@@ -35,6 +35,7 @@ export const pages = {
       p1: "Where Christ Is is free forever — no ads, no paywall, no premium tier. It exists to lift eyes upward and then send people away, back to their real lives and toward God.",
       p2: "If this daily moment has blessed you, the best way to support it is simple: share it with someone who could use a quiet moment with God.",
       p3: "Where Christ Is is the companion to WalkedWithGod (walkedwithgod.com). Both are free, both pointed away from themselves, and both exist for one purpose: to point people to Christ.",
+      donate: "Give a Gift",
       note: "If God moves your heart to give financially, you can reach us at hello@wherechristis.com and we will point you in the right direction.",
     },
     contact: {
@@ -80,6 +81,7 @@ export const pages = {
       p1: "Where Christ Is es gratis para siempre — sin anuncios, sin muro de pago, sin nivel premium. Existe para levantar los ojos hacia arriba y luego enviar a las personas de regreso a sus vidas reales y hacia Dios.",
       p2: "Si este momento diario te ha bendecido, la mejor manera de apoyarlo es simple: compártelo con alguien que necesite un momento tranquilo con Dios.",
       p3: "Where Christ Is es el compañero de WalkedWithGod (walkedwithgod.com). Ambos son gratuitos, ambos señalan lejos de sí mismos, y ambos existen para un único propósito: señalar a las personas hacia Cristo.",
+      donate: "Hacer una Donación",
       note: "Si Dios mueve tu corazón para dar financieramente, puedes escribirnos a hello@wherechristis.com y te indicaremos cómo hacerlo.",
     },
     contact: {
@@ -125,6 +127,7 @@ export const pages = {
       p1: "Where Christ Is est gratuit pour toujours — pas de publicités, pas de paywall, pas de niveau premium. Il existe pour lever les yeux vers le haut et renvoyer les gens vers leurs vraies vies et vers Dieu.",
       p2: "Si ce moment quotidien t'a béni, la meilleure façon de le soutenir est simple : partage-le avec quelqu'un qui aurait besoin d'un moment calme avec Dieu.",
       p3: "Where Christ Is est le compagnon de WalkedWithGod (walkedwithgod.com). Les deux sont gratuits, les deux pointent loin d'eux-mêmes, et les deux existent pour un seul but : pointer les gens vers Christ.",
+      donate: "Faire un Don",
       note: "Si Dieu touche ton cœur pour donner financièrement, tu peux nous contacter à hello@wherechristis.com et nous t'indiquerons comment faire.",
     },
     contact: {
