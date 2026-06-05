@@ -1,12 +1,22 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { pages } from "../data/pages.js";
 import SubPageHeader from "../components/SubPageHeader";
 import Footer from "../components/Footer";
 
-export const metadata = {
-  title: "Support This Mission — Where Christ Is",
-  description: "Where Christ Is is free forever. If it has blessed you, you can help sustain it.",
-};
-
 export default function SupportPage() {
+  const [lang, setLang] = useState("en");
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("wci-lang");
+      if (saved && pages[saved]) setLang(saved);
+    } catch (e) {}
+  }, []);
+
+  const t = pages[lang].support;
+
   return (
     <main style={{ minHeight: "100vh", padding: "48px 24px 0" }}>
       <div style={{ maxWidth: "540px", margin: "0 auto", textAlign: "center" }}>
@@ -20,26 +30,13 @@ export default function SupportPage() {
             fontWeight: 600,
           }}
         >
-          Support This Mission
+          {t.title}
         </h1>
 
         <div style={{ fontSize: "15px", lineHeight: 1.85, color: "var(--brown)" }}>
-          <p style={{ marginBottom: "20px" }}>
-            Where Christ Is is free forever — no ads, no paywall, no premium
-            tier. It exists to lift eyes upward and then send people away, back
-            to their real lives and toward God.
-          </p>
-
-          <p style={{ marginBottom: "20px" }}>
-            If this daily moment has blessed you, the best way to support it is
-            simple: share it with someone who could use a quiet moment with God.
-          </p>
-
-          <p style={{ marginBottom: "20px" }}>
-            Where Christ Is is the companion to WalkedWithGod (walkedwithgod.com).
-            Both are free, both pointed away from themselves, and both exist for
-            one purpose: to point people to Christ.
-          </p>
+          <p style={{ marginBottom: "20px" }}>{t.p1}</p>
+          <p style={{ marginBottom: "20px" }}>{t.p2}</p>
+          <p style={{ marginBottom: "20px" }}>{t.p3}</p>
 
           <div
             style={{
@@ -51,8 +48,7 @@ export default function SupportPage() {
           />
 
           <p style={{ fontSize: "13px", color: "var(--muted)", fontStyle: "italic" }}>
-            If God moves your heart to give financially, you can reach us at
-            hello@walkedwithgod.com and we will point you in the right direction.
+            {t.note}
           </p>
         </div>
       </div>
