@@ -9,6 +9,7 @@ export default function ShareButton({
   shareLabel = "Share this as an image",
   preparingLabel = "Preparing...",
   tagline = "Set your mind on things above.",
+  sendLabel = "Send this to someone",
 }) {
   const [saving, setSaving] = useState(false);
   const [hover, setHover] = useState(false);
@@ -160,6 +161,19 @@ export default function ShareButton({
     }, "image/png");
   }
 
+  async function handleSend() {
+    const text = "I found something quiet and good — wherechristis.com";
+    if (navigator.share) {
+      try {
+        await navigator.share({ text });
+        return;
+      } catch (e) {}
+    }
+    const url =
+      "https://wa.me/?text=" + encodeURIComponent(text);
+    window.open(url, "_blank");
+  }
+
   return (
     <div style={{ marginTop: "20px", textAlign: "center" }}>
       <button
@@ -182,6 +196,26 @@ export default function ShareButton({
       >
         {saving ? preparingLabel : shareLabel}
       </button>
+
+      <div style={{ marginTop: "16px" }}>
+        <button
+          onClick={handleSend}
+          style={{
+            background: "none",
+            border: "none",
+            color: "var(--gold)",
+            fontSize: "13px",
+            fontFamily: "inherit",
+            cursor: "pointer",
+            letterSpacing: "0.5px",
+            textDecoration: "underline",
+            textUnderlineOffset: "3px",
+            opacity: 0.8,
+          }}
+        >
+          {sendLabel}
+        </button>
+      </div>
     </div>
   );
 }

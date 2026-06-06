@@ -27,6 +27,21 @@ const footerLinks = {
   ],
 };
 
+const seekerLine = {
+  en: {
+    text: "Have a question about faith, or want to talk it through?",
+    linkText: "Visit walkedwithgod.com →",
+  },
+  es: {
+    text: "¿Tienes una pregunta sobre la fe, o quieres hablar?",
+    linkText: "Visita walkedwithgod.com →",
+  },
+  fr: {
+    text: "Tu as une question sur la foi, ou tu veux en parler ?",
+    linkText: "Visite walkedwithgod.com →",
+  },
+};
+
 export default function Footer() {
   const [lang, setLang] = useState("en");
 
@@ -38,6 +53,7 @@ export default function Footer() {
   }, []);
 
   const links = footerLinks[lang];
+  const seeker = seekerLine[lang];
 
   return (
     <footer
@@ -56,12 +72,14 @@ export default function Footer() {
           margin: "0 auto 24px",
         }}
       />
+
       <nav
         style={{
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
           gap: "8px 20px",
+          marginBottom: "32px",
         }}
       >
         {links.map((link) => (
@@ -82,9 +100,30 @@ export default function Footer() {
 
       <p
         style={{
+          fontSize: "13px",
+          color: "var(--muted)",
+          lineHeight: 1.7,
+          marginBottom: "28px",
+        }}
+      >
+        {seeker.text}{" "}
+        <Link
+          href="https://walkedwithgod.com"
+          target="_blank"
+          style={{
+            color: "var(--gold)",
+            textDecoration: "underline",
+            textUnderlineOffset: "3px",
+          }}
+        >
+          {seeker.linkText}
+        </Link>
+      </p>
+
+      <p
+        style={{
           fontSize: "11px",
           color: "var(--muted)",
-          marginTop: "20px",
           opacity: 0.5,
         }}
       >

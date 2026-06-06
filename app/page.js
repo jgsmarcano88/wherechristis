@@ -245,6 +245,7 @@ export default function Home() {
             shareLabel={t.share}
             preparingLabel={t.preparing}
             tagline={t.tagline}
+            sendLabel={t.send}
           />
 
           {/* Tagline */}
